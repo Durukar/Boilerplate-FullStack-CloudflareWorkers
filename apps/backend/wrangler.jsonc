@@ -12,7 +12,7 @@
     {
       "binding": "DB",
       "database_name": "template_db",
-      "database_id": "274d4f22-ced1-437b-86b9-f7a1393a5acf",
+      # "database_id": "id_cloudflareD1",
       "migrations_dir": "drizzle"
     }
   ]
