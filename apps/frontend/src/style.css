@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@keyframes energy-pass {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.energy-beam {
+  position: absolute;
+  top: 50%; /* Centralizado verticalmente */
+  left: -100%;
+  width: 50%; /* Tamanho do rastro */
+  height: 2px; /* Espessura fina */
+  background: linear-gradient(90deg, transparent, #d8b4fe, transparent); /* Roxo claro */
+  box-shadow: 0 0 30px 5px rgba(168, 85, 247, 0.6); /* O brilho (Glow) forte */
+  animation: energy-pass 3s ease-in-out infinite; /* Velocidade */
+  transform: translateY(-50%);
+  z-index: 1; /* Fica atrás do texto, mas na frente do fundo */
+}

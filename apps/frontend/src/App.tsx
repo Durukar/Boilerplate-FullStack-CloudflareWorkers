@@ -1,54 +1,20 @@
-import { useEffect, useState } from 'react'
-import { client } from './client'
-import './App.css'
-
-type User = {
-  id: number
-  name: string
-  email: string
-}
-
-function App() {
-  const [users, setUsers] = useState<User[]>([])
-
-  const fetchUsers = async () => {
-    try {
-      const res = await client.api.users.$get()
-      if (res.ok) {
-        const data = await res.json()
-        setUsers(data as User[])
-      }
-    } catch (error) {
-      console.error('Erro ao buscar usuários', error)
-    }
-  }
-
-  useEffect(() => {
-    fetchUsers()
-  }, [])
-
+export default function App() {
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-      <h1>Usuários (D1 + Hono + React)</h1>
+    <div className="relative min-h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden selection:bg-purple-900 selection:text-white">
+      <div className="energy-beam"></div>
+      <div className="absolute w-[800px] h-[500px] bg-purple-900/10 rounded-[100%] blur-[120px] pointer-events-none opacity-40"></div>
+      <div className="relative z-10 text-center space-y-4 bg-black/40 backdrop-blur-sm p-8 rounded-xl border border-white/5">
+        
+        <p className="font-mono text-sm md:text-base text-purple-500 font-medium tracking-[0.5em] uppercase pl-2 animate-pulse">
+          Boilerplate
+        </p>
 
-      {/* Lista */}
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {users.map(user => (
-          <li key={user.id} style={{ 
-            background: '#f4f4f4', 
-            margin: '5px 0', 
-            padding: '10px', 
-            borderRadius: '4px',
-            color: '#333'
-          }}>
-            <strong>{user.name}</strong> <small>({user.email})</small>
-          </li>
-        ))}
-      </ul>
+        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter text-white">
+          Cloudflare Workers
+        </h1>
+        
+      </div>
       
-      {users.length === 0 && <p>Nenhum usuário encontrado.</p>}
     </div>
   )
 }
-
-export default App
